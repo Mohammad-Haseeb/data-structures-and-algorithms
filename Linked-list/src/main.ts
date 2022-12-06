@@ -28,4 +28,11 @@ console.log("insert at  : ", linkedList.insertAt(0, 20));
 console.log("insert at  : ", linkedList.insertAt(2, 3));
 console.log("insert at  : ", linkedList.insertAt(10, 109));
 
-console.log("ppo : ", linkedList.printList());
+console.log("before delete: ", linkedList.printList());
+
+
+console.log("delete at  0 : ", linkedList.deleteAt(0));
+console.log("delete at 3 : ", linkedList.deleteAt(3));
+
+console.log("after delete : ", linkedList.printList());
+

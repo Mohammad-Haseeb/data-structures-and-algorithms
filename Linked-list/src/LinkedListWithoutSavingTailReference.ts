@@ -57,47 +57,54 @@ export class LinkedList<T> {
   insertAt<T, V>(index: T, value: V): V {
     const node = new Node(value);
     if (index == 0 && this.head) {
-      console.log("node : ",this.head)
+      console.log("node : ", this.head);
       node.next = this.head;
       this.head = node;
       return value;
     }
-    let localIndexCheck=0;
+    let localIndexCheck = 0;
     let temporary = this.head;
-    let prev=temporary;
+    let prev = temporary;
     while (temporary) {
-      if(localIndexCheck>=index){
-           break;
+      if (localIndexCheck >= index) {
+        break;
       }
       prev = temporary;
       temporary = temporary.next;
       ++localIndexCheck;
     }
-    node.next=temporary;
-    prev.next=node;
+    node.next = temporary;
+    prev.next = node;
     return value;
   }
-}
 
-// try{
-//   if(!this.head){
-//     throw new Error("data not available")
-//   }
-//   if (!this.head.next) {
-//     const data = this.head.value;
-//     this.head = null;
-//     return data;
-//   }
-//   let temporary = this.head;
-//   let prev;
-//   while (temporary.next) {
-//     prev = temporary;
-//     temporary = temporary.next;
-//   }
-//   const data = temporary.value;
-//   prev.next = null;
-//   return data;
-// }catch(error){
-//   throw error;
-// }
-// }
+  deleteAt(index:T){
+    if(index>this.total){
+      throw new Error("out of index")
+
+    }
+    if (index == 0 && this.head) {
+      console.log("node : ", this.head);
+      const data = this.head.value;
+      this.head = this.head.next;
+      return data;
+    }
+
+    let temporary = this.head;
+    let prev = temporary;
+    let localIndexCheck = 0;
+    while (temporary) {
+      if (localIndexCheck == index) {
+        break;
+      }
+      prev = temporary;
+      temporary = temporary.next;
+      ++localIndexCheck;
+    }
+    const data = prev.value;  
+    prev.next=temporary.next
+    return data;
+
+
+  }
+}
