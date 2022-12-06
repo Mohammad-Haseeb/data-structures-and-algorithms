@@ -79,12 +79,32 @@ export class LinkedList<T> {
   }
 
   deleteAt(index:T){
+    if(index>this.total){
+      throw new Error("out of index")
+
+    }
     if (index == 0 && this.head) {
       console.log("node : ", this.head);
-      const data = this.head.data;
+      const data = this.head.value;
       this.head = this.head.next;
       return data;
     }
+
+    let temporary = this.head;
+    let prev = temporary;
+    let localIndexCheck = 0;
+    while (temporary) {
+      if (localIndexCheck == index) {
+        break;
+      }
+      prev = temporary;
+      temporary = temporary.next;
+      ++localIndexCheck;
+    }
+    const data = prev.value;  
+    prev.next=temporary.next
+    return data;
+
 
   }
 }
