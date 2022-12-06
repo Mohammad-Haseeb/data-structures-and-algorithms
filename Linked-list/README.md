@@ -2,8 +2,6 @@
 # setup process
  ```
  npm i 
- npx ts-node src/main.ts
+ npx ts-node src/main.ts | npm run dev
  ```
 
-
-![Alt text](cli_image.png "Cli")
